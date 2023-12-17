@@ -1,0 +1,21 @@
+<!-- chatbot_page.html -->
+{% extends 'base.html' %}
+
+{% block title %}ChatBot{% endblock %}
+
+{% block content %}
+<section>
+    <h2>ChatBot</h2>
+    <form method="post" action="{{ url_for('get_response') }}">
+        <label for="user_message">Ask the ChatBot:</label>
+        <input type="text" id="user_message" name="user_message" required>
+        <button type="submit">Send</button>
+    </form>
+    {% if user_message %}
+    <p><strong>You:</strong> {{ user_message }}</p>
+    {% endif %}
+    {% if chatbot_response %}
+    <p><strong>ChatBot:</strong> {{ chatbot_response }}</p>
+    {% endif %}
+</section>
+{% endblock %}
